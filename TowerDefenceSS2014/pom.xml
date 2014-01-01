@@ -38,7 +38,7 @@
     <groupId>com.novocode</groupId>
     	<artifactId>junit-interface</artifactId>
     	<version>0.9</version>
-    	<scope>JunitTest</scope>
+    	<scope>test</scope>
     	</dependency>
     <dependency>
   		<groupId>log4j</groupId>
