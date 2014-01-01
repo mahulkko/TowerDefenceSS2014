@@ -36,7 +36,6 @@ public class Player implements IPlayer {
      * Constructor Player - Uses the default configuration from the GameSettings
      */
 	public Player() {
-		//TODO(mh): call here the getter and setter?
 		this.name = GameSettings.getPlayerName(); 
 		this.life = GameSettings.getPlayerLife();
 		this.money = GameSettings.getPlayerMoney();
@@ -70,6 +69,7 @@ public class Player implements IPlayer {
 	 * @param name - Set the name of the player
 	 */
 	public void setName(String name) {
+		log.info("Set Player: "+ this.name + " to " + name);
 		this.name = name;
 	}
 	
@@ -86,6 +86,7 @@ public class Player implements IPlayer {
 	 * @param money - Set the money of the player
 	 */
 	public void setMoney(int money) {
+		log.info("Set Money: "+ this.money + " to " + money + " | Player: " + this.name);
 		this.money = money;
 	}
 	
@@ -102,6 +103,7 @@ public class Player implements IPlayer {
 	 * @param life - Set the life of the player
 	 */
 	public void setLife(int life) {
+		log.info("Set Life: "+ this.life + " to " + life + " | Player: " + this.name);
 		this.life = life;
 	}
 }

@@ -1,8 +1,6 @@
 package de.htwg.towerdefence2014.TowerDefence;
 
 import org.apache.log4j.BasicConfigurator;
-import de.htwg.towerdefence2014.model.IPlayer;
-import de.htwg.towerdefence2014.model.impl.Player;
 
 /**
  * @author Christoph Knetschke and Martin Hulkkonen
@@ -21,11 +19,5 @@ public class TowerDefence {
          * Logger
          */
         BasicConfigurator.configure();
-        
-        /*Comment out - Only for testing
-		System.out.println("TowerDefence");
-		IPlayer player = new Player("test",1,2);
-		IPlayer player2 = new Player(); /* */ 
-		//TODO(mh): write here the startup code for the game
 	}
 }

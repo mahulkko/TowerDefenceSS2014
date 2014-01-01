@@ -1,11 +1,15 @@
 package de.htwg.towerdefence2014.gameSettings;
 
-public class GameSettings {
+/**
+ * <b>GameSetting - Global position to edit values for the game play</b>
+ * @author Christoph Knetschke and Martin Hulkkonen
+ *
+ */
+public final class GameSettings {
 
 	/************************************************************
 	 * Player Values
 	 ***********************************************************/
-	
 	/**
 	 * Life of the player
 	 */
@@ -23,14 +27,46 @@ public class GameSettings {
 	
 	
 	/************************************************************
-	 * Getter and setter of the player values
+	 * Tower Values
 	 ***********************************************************/
+	/**
+	 * Damage of the tower
+	 */
+	private static final int TOWERDAMAGE = 10;
 	
+	/**
+	 * Range of the tower
+	 */
+	private static final int TOWERRANGE = 10;
+	
+	/**
+	 * Speed of the tower
+	 */
+	private static final int TOWERSPEED = 10;
+	
+	/**
+	 * NumberOfShoot of the tower
+	 */
+	private static final int TOWERNUMBEROFSHOOT = 10;
+	
+	/**
+	 * Hitrate of the tower
+	 */
+	private static final double TOWERHITRATE = 1.0;
+	
+	
+	/************************************************************
+	 * Private constructor
+	 ***********************************************************/
 	/**
 	 * Private constructor - so there can't be an instance of it
 	 */
 	private GameSettings() { }
 	
+	
+	/************************************************************
+	 * Getter of the player values
+	 ***********************************************************/
 	/**
 	 * @return Returns the default of the player name
 	 */
@@ -50,5 +86,44 @@ public class GameSettings {
 	 */
 	public static int getPlayerMoney() {
 		return PLAYERMONEY;
+	}
+	
+	
+	/************************************************************
+	 * Getter of the tower values
+	 ************************************************************
+	/**
+	 * @return - Returns the default damage of the tower
+	 */
+	public static int getTowerDamage() {
+		return TOWERDAMAGE;
+	}
+	
+	/**
+	 * @return Returns the default range of the tower
+	 */
+	public static int getTowerRange() {
+		return TOWERRANGE;
+	}
+	
+	/**
+	 * @return Returns the default speed of the tower
+	 */
+	public static int getTowerSpeed() {
+		return TOWERSPEED;
+	}
+	
+	/**
+	 * @return Returns the default number of shoots of the tower. With this parameter the tower can deal splash damage on each round.
+	 */
+	public static int getTowerNumberOfShoot() {
+		return TOWERNUMBEROFSHOOT;
+	}
+	
+	/**
+	 * @return Returns the default hitrate of the tower. Hitrate is the change to deal a hit with max damage.
+	 */
+	public static double getTowerHitRate() {
+		return TOWERHITRATE;
 	}
 }
