@@ -2,6 +2,7 @@ package de.htwg.towerdefence2014.model.impl;
 
 import de.htwg.towerdefence2014.gameSettings.GameSettings;
 import de.htwg.towerdefence2014.model.ITower;
+import de.htwg.towerdefence2014.util.GameHelper;
 
 /**
  * <b>Tower Class</b>
@@ -10,6 +11,16 @@ import de.htwg.towerdefence2014.model.ITower;
  * @author Christoph Knetschke and Martin Hulkkonen
  */
 public class Tower implements ITower {
+	
+	/**
+	 * 100 as a constant
+	 */
+	private static final double hundred = 100.0;
+	
+	/**
+	 * 0.5 as a constant
+	 */
+	private static final double half = 0.5;	
 	
 	/**
 	 * Damage of the tower
@@ -138,7 +149,16 @@ public class Tower implements ITower {
      * @return Returns a calculated damage from all parameters
      */
     public int calcDamage() {
-    	//TODO(mh): implement me
-    	return 0;
+    	// Calculate a random integer number
+    	int random = (int)(GameHelper.random(1.0,hundred)+half);
+    	
+		// Random integer is bigger than the hitrate - so the tower has hit the target
+		if( random <= this.hitrate*hundred ) {
+			return this.damage;
+			
+		// Calculate the smaller damage of the tower
+		} else {
+			return (int)(this.damage*(random/hundred));
+		}
     }
 }
