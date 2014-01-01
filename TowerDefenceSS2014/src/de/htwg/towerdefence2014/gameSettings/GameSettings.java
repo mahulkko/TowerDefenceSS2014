@@ -9,17 +9,17 @@ public class GameSettings {
 	/**
 	 * Life of the player
 	 */
-	private static int playerLife = 10;
+	private static final int PLAYERLIFE = 10;
 	
 	/**
 	 * Money of the player
 	 */
-	private static int playerMoney = 1000;
+	private static final int PLAYERMONEY = 1000;
 	
 	/**
 	 * Name of the player
 	 */
-	private static String playerName = "Player";
+	private static final String PLAYERNAME = "Player";
 	
 	
 	/************************************************************
@@ -35,41 +35,20 @@ public class GameSettings {
 	 * @return Returns the default of the player name
 	 */
 	public static String getPlayerName() {
-		return playerName;
-	}
-	
-	/**
-	 * @param name - Set the default of the player name
-	 */
-	public static void setPlayerName(String name) {
-		playerName = name;
+		return PLAYERNAME;
 	}
 	
 	/**
 	 * @return Returns the default life of the player
 	 */
 	public static int getPlayerLife() {
-		return playerLife;
-	}
-	
-	/**
-	 * @param life - Set the default life of the player
-	 */
-	public static void setPlayerLife(int life) {
-		playerLife = life;
+		return PLAYERLIFE;
 	}
 	
 	/**
 	 * @return Returns the default money of the player
 	 */
 	public static int getPlayerMoney() {
-		return playerMoney;
-	}
-	
-	/**
-	 * @param Money - Set the default money of the player
-	 */
-	public static void setPlayerMoney(int Money) {
-		playerMoney = Money;
+		return PLAYERMONEY;
 	}
 }

@@ -37,14 +37,14 @@ public class Player implements IPlayer {
      */
 	public Player() {
 		//TODO(mh): call here the getter and setter?
-		this.name = GameSettings.getPlayerName();
+		this.name = GameSettings.getPlayerName(); 
 		this.life = GameSettings.getPlayerLife();
 		this.money = GameSettings.getPlayerMoney();
 		log.info("Added new Player with default values from GameSettings");
 	}
 	
 	/**
-	 * Constructor Player - For other configuration
+	 * <b>Constructor Player - For other configuration</b>
 	 * @param playerName - Name of the player
 	 * @param life - Life of the player
 	 * @param money - Money of the player 
