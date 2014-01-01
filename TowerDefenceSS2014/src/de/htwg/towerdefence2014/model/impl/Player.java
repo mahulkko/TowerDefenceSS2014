@@ -1,6 +1,7 @@
 package de.htwg.towerdefence2014.model.impl;
 
 import org.apache.log4j.Logger;
+import de.htwg.towerdefence2014.gameSettings.GameSettings;
 import de.htwg.towerdefence2014.model.IPlayer;
 
 /**
@@ -31,16 +32,28 @@ public class Player implements IPlayer {
      */
     private static Logger log = Logger.getLogger("TowerDefence.Model.Player");
 	
-	//TODO(mh): place this files to a general place for editing
-	private static final int setLive = 10;
-	private static final int setMoney = 1000;
-	
+    /**
+     * Constructor Player - Uses the default configuration from the GameSettings
+     */
 	public Player() {
-		//TODO(mh): place this files to a general place for editing
-		this.name = "Player1";
-		this.life = setLive;
-		this.money = setMoney;
-		log.info("Added new Player with default values");
+		//TODO(mh): call here the getter and setter?
+		this.name = GameSettings.getPlayerName();
+		this.life = GameSettings.getPlayerLife();
+		this.money = GameSettings.getPlayerMoney();
+		log.info("Added new Player with default values from GameSettings");
+	}
+	
+	/**
+	 * Constructor Player - For other configuration
+	 * @param playerName - Name of the player
+	 * @param life - Life of the player
+	 * @param money - Money of the player 
+	 */
+	public Player(String playerName, int life, int money) {
+		this.name = playerName;
+		this.life = life;
+		this.money = money;
+		log.info("Added new Player with name: " + this.name + " | Life: " + this.life + " | Money: " + this.money);
 	}
 	
 	@Override
@@ -48,6 +61,7 @@ public class Player implements IPlayer {
 	 * @return Returns the name of the player
 	 */
 	public String getName() {
+		GameSettings.getPlayerName();
 		return this.name;
 	}
 	

@@ -22,8 +22,11 @@ public class TowerDefence {
          */
         BasicConfigurator.configure();
         
+        /* Comment out - Only for testing
 		System.out.println("TowerDefence");
-		IPlayer player = new Player();
+		IPlayer player = new Player("test",1,2);
+		IPlayer player2 = new Player();
+		*/
 		//TODO(mh): write here the startup code for the game
 	}
 }
