@@ -13,5 +13,6 @@ public class TowerDefence {
 	 */
 	public static void main(String[] args) {
 		System.out.println("TowerDefence");
+		//TODO(mh): write here the startup code for the game
 	}
 }
