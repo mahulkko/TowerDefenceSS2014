@@ -1,13 +1,15 @@
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>de.htwg</groupId>
+  <groupId>TowerDefenceSS2014</groupId>
   <artifactId>TowerDefenceSS2014</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
   <name>TowerDefenceSS2014</name>
-  <description>A TowerDefence game in Java</description>
-  <build>
+  <description>TowerDefence Game SA</description>
+  
+   <build>
     <sourceDirectory>src</sourceDirectory>
-    <testSourceDirectory>UnitTest</testSourceDirectory>
+    <testSourceDirectory>JunitTest</testSourceDirectory>
     <resources>
       <resource>
         <directory>src</directory>
@@ -44,5 +46,11 @@
 	  <artifactId>guice</artifactId>
   	  <version>3.0</version>
 	</dependency>
+	<dependency>
+    	<groupId>org.lwjgl.lwjgl</groupId>
+    	<artifactId>lwjgl</artifactId>
+    	<version>2.8.5</version>
+	</dependency>
 </dependencies>
+
 </project>
