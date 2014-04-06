@@ -1,9 +1,6 @@
 package de.htwg.towerdefence2014.model.impl;
 
 import java.io.IOException;
-
-import org.apache.log4j.BasicConfigurator;
-
 import de.htwg.towerdefence2014.model.IPlayer;
 import de.htwg.towerdefence2014.model.impl.Player;
 import junit.framework.TestCase;

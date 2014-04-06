@@ -56,6 +56,20 @@ public final class GameSettings {
 	
 	
 	/************************************************************
+	 * Mob Values
+	 ***********************************************************/
+	/**
+	 * Health of the mob
+	 */
+	private static final int MOBHEALTH = 100;
+	
+	/**
+	 * Speed of the mob
+	 */
+	private static final int MOBSPEED = 10;
+	
+	
+	/************************************************************
 	 * Private constructor
 	 ***********************************************************/
 	/**
@@ -125,5 +139,22 @@ public final class GameSettings {
 	 */
 	public static double getTowerHitRate() {
 		return TOWERHITRATE;
+	}
+	
+	/************************************************************
+	 * Getter of the mob values
+	 ************************************************************
+	 /**
+	 * @return - Returns the default health of the mob
+	 */
+	public static int getMobHealth() {
+		return MOBHEALTH;
+	}
+	
+	 /**
+	 * @return - Returns the default speed of the mob
+	 */
+	public static int getMobSpeed() {
+		return MOBSPEED;
 	}
 }

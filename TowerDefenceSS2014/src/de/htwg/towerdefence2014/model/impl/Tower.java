@@ -1,5 +1,7 @@
 package de.htwg.towerdefence2014.model.impl;
 
+import org.apache.log4j.Logger;
+
 import de.htwg.towerdefence2014.gameSettings.GameSettings;
 import de.htwg.towerdefence2014.model.ITower;
 import de.htwg.towerdefence2014.util.GameHelper;
@@ -15,33 +17,38 @@ public class Tower implements ITower {
 	/**
 	 * 100 as a constant
 	 */
-	private static final double hundred = 100.0;
-	
+	private static final double HUNDRED = 100.0;
+
 	/**
 	 * 0.5 as a constant
 	 */
-	private static final double half = 0.5;	
-	
+	private static final double HALF = 0.5;
+
+	/**
+     * Logger for log4j connection
+     */
+    private static Logger log = Logger.getLogger("TowerDefence.Model.Tower");
+
 	/**
 	 * Damage of the tower
 	 */
 	private int damage;
-	
+
 	/**
 	 * Range of the tower
 	 */
 	private int range;
-	
+
 	/**
 	 * Speed of the tower
 	 */
 	private int speed;
-	
+
 	/**
 	 * Number of shoots from the tower. With this parameter the tower can deal splash damage on each round.
 	 */
 	private int numberShoot;
-	
+
 	/**
 	 * Hitrate of the tower. Hitrate is the change to deal a hit with max damage.
 	 */
@@ -56,6 +63,7 @@ public class Tower implements ITower {
 		this.speed = GameSettings.getTowerSpeed();
 		this.numberShoot = GameSettings.getTowerNumberOfShoot();
 		this.hitrate = GameSettings.getTowerHitRate();
+		log.info("Added new tower with default values from GameSettings");
 	}
 	
 	/**
@@ -72,8 +80,11 @@ public class Tower implements ITower {
 		this.speed = speed;
 		this.numberShoot = numberShoot;
 		this.hitrate = hitrate;
+		log.info("Added new tower with damage: " + this.damage + " | Range: " + this.range + " | Speed: " 
+				+ this.speed + " | Number of Shoot: " + this.numberShoot + " | Hitrate: " + this.hitrate);
 	}
-		
+	
+	@Override
 	/**
 	 * @return Returns the max damage that the tower can make
 	 */
@@ -81,6 +92,7 @@ public class Tower implements ITower {
     	return this.damage;
     }
     
+	@Override
     /**
      * @param damage - Set the max damage that the tower can make
      * @return
@@ -89,6 +101,7 @@ public class Tower implements ITower {
     	this.damage = damage;
     }
     
+	@Override
     /**
      * @return Returns the hitrate of the tower. Hitrate is the change to deal a hit with max damage.
      */
@@ -96,6 +109,7 @@ public class Tower implements ITower {
     	return this.hitrate;
     }
     
+	@Override
     /**
      * @param hitrate - Set the hitrate of the tower. Hitrate is the change to deal a hit with max damage.
      */
@@ -103,6 +117,7 @@ public class Tower implements ITower {
     	this.hitrate = hitrate;
     }
     
+	@Override
     /**
      * @return Returns the number of shoots. With this parameter the tower can deal splash damage on each round.
      */
@@ -110,6 +125,7 @@ public class Tower implements ITower {
     	return this.numberShoot;
     }
     
+	@Override
     /**
      * @param numbershoot - Set the number of shoots of the tower. With this parameter the tower can deal splash damage on each round.
      */
@@ -117,6 +133,7 @@ public class Tower implements ITower {
     	this.numberShoot = numbershoot;
     }
     
+	@Override
     /**
      * @return Returns the shooting range of the tower
      */
@@ -124,6 +141,7 @@ public class Tower implements ITower {
     	return this.range;
     }
     
+	@Override
     /**
      * @param range - Set the shooting range of the tower
      */
@@ -131,6 +149,7 @@ public class Tower implements ITower {
     	this.range = range;
     }
     
+	@Override
     /**
      * @return Returns the attacking speed of the tower
      */
@@ -138,6 +157,7 @@ public class Tower implements ITower {
     	return this.speed;
     }
     
+	@Override
     /**
      * @param speed - Set the attacking speed of the tower
      */
@@ -145,20 +165,21 @@ public class Tower implements ITower {
     	this.speed = speed;
     }
     
+	@Override
     /**
      * @return Returns a calculated damage from all parameters
      */
     public int calcDamage() {
     	// Calculate a random integer number
-    	int random = (int)(GameHelper.random(1.0,hundred)+half);
+    	int random = (int)(GameHelper.random(1.0, HUNDRED) + HALF);
     	
 		// Random integer is bigger than the hitrate - so the tower has hit the target
-		if( random <= this.hitrate*hundred ) {
+		if( random <= this.hitrate * HUNDRED ) {
 			return this.damage;
 			
 		// Calculate the smaller damage of the tower
 		} else {
-			return (int)(this.damage*(random/hundred));
+			return (int)(this.damage * (random / HUNDRED));
 		}
     }
 }
