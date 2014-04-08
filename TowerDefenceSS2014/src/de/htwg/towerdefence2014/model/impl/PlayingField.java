@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import de.htwg.towerdefence2014.model.IMob;
 import de.htwg.towerdefence2014.model.IPlayingField;
 import de.htwg.towerdefence2014.model.ITower;
+import de.htwg.towerdefence2014.util.enums.FieldType;
 
 /**
  * <b>PlayingField Class</b>
@@ -139,8 +140,8 @@ public class PlayingField implements IPlayingField {
 	 * @param y - Y coordinate of the selected playing field
 	 * @return Returns the type of the field and what's standing on it.
 	 */
-	public int getTypeOf(int x, int y) {
-		return 0;
+	public FieldType getTypeOf(int x, int y) {
+		return FieldType.NONE;
 	}
 	
 	/**

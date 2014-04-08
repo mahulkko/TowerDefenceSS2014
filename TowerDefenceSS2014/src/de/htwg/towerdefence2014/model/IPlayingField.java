@@ -1,6 +1,7 @@
 package de.htwg.towerdefence2014.model;
 
 import java.util.List;
+import de.htwg.towerdefence2014.util.enums.FieldType;
 
 /**
  * <b>Interface IPlayingField</b>
@@ -104,7 +105,7 @@ public interface IPlayingField {
 	 * @param y - Y coordinate of the selected playing field
 	 * @return Returns the type of the field and what's standing on it.
 	 */
-	int getTypeOf(int x, int y);
+	FieldType getTypeOf(int x, int y);
 	
 	/**
 	 * @return Returns the x size of the initialized playing field
