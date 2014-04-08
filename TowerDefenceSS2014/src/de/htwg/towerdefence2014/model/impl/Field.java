@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import de.htwg.towerdefence2014.model.IMob;
 import de.htwg.towerdefence2014.model.ITower;
+import de.htwg.towerdefence2014.util.enums.FieldType;
 
 /**
  * <b>Field Class</b>
@@ -164,13 +165,13 @@ public class Field {
 	/**
 	 * @return Returns the type of the field
 	 */
-	public int getTypeOf() {
+	public FieldType getTypeOf() {
 		if(this.isSetTower()) {
-			return 1;
+			return FieldType.TOWER;
 		} else if (this.getNumberOfMobs() != 0) {
-			return 2;
+			return FieldType.MOB;
 		} else {
-			return 0;
+			return FieldType.NONE;
 		}
 	}
 }
