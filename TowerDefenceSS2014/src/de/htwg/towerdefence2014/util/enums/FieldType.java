@@ -7,5 +7,5 @@ package de.htwg.towerdefence2014.util.enums;
  * @author Christoph Knetschke and Martin Hulkkonen
  */
 public enum FieldType {
-	NONE, TOWER, MOB
+	NONE, TOWER, MOB, UNDEFINED
 }

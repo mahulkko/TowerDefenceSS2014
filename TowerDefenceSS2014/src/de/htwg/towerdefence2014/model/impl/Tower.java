@@ -95,7 +95,6 @@ public class Tower implements ITower {
 	@Override
     /**
      * @param damage - Set the max damage that the tower can make
-     * @return
      */
     public void setDamage(int damage) {
     	this.damage = damage;
@@ -174,7 +173,7 @@ public class Tower implements ITower {
     	int random = (int)(GameHelper.random(1.0, HUNDRED) + HALF);
     	
 		// Random integer is bigger than the hitrate - so the tower has hit the target
-		if( random <= this.hitrate * HUNDRED ) {
+		if ( random <= this.hitrate * HUNDRED ) {
 			return this.damage;
 			
 		// Calculate the smaller damage of the tower

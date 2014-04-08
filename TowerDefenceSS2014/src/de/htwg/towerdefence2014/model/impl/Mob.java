@@ -47,6 +47,7 @@ public class Mob implements IMob {
 		log.info("Added new mob with health: " + this.health + " | Speed: " + this.speed);
 	}
 	
+	@Override
 	/**
 	 * @return Returns the current health state of the mob
 	 */
@@ -54,6 +55,7 @@ public class Mob implements IMob {
 		return this.health;
 	}
 	
+	@Override
 	/**
 	 * @param health - Set the health of the mob
 	 */
@@ -61,6 +63,7 @@ public class Mob implements IMob {
 		this.health = health;
 	}
 	
+	@Override
 	/**
 	 * @return Returns the speed of the mob
 	 */
@@ -68,6 +71,7 @@ public class Mob implements IMob {
 		return this.speed;
 	}
 	
+	@Override
 	/**
 	 * @param speed - Set the speed of the mob
 	 */
@@ -75,6 +79,7 @@ public class Mob implements IMob {
 		this.speed = speed;
 	}
 	
+	@Override
 	/**
 	 * @return Returns true when the mob is dead
 	 */
