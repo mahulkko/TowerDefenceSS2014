@@ -16,8 +16,8 @@ public class TowerDefence {
 	public static void main(String[] args) {
 		
 		/**
-         * Logger
-         */
-        BasicConfigurator.configure();
+	     * Logger
+	     */
+	    BasicConfigurator.configure();
 	}
 }
