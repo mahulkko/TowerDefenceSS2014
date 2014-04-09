@@ -6,10 +6,19 @@ package de.htwg.towerdefence2014.util;
  */
 public final class GameHelper {
 	
+	/************************************************************
+	 * Private Constructor
+	 ***********************************************************/
+	
 	/**
 	 * Private GameHelper constructor - so there can't be an instance
 	 */
 	private GameHelper() { }
+	
+	
+	/************************************************************
+	 * Public static methods
+	 ***********************************************************/
 	
 	/**
 	 * <b> Random function - Calculates a random double between low and high</b>

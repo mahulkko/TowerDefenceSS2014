@@ -10,6 +10,7 @@ public final class GameSettings {
 	/************************************************************
 	 * Player Values
 	 ***********************************************************/
+	
 	/**
 	 * Life of the player
 	 */
@@ -29,6 +30,7 @@ public final class GameSettings {
 	/************************************************************
 	 * Tower Values
 	 ***********************************************************/
+	
 	/**
 	 * Damage of the tower
 	 */
@@ -58,6 +60,7 @@ public final class GameSettings {
 	/************************************************************
 	 * Mob Values
 	 ***********************************************************/
+	
 	/**
 	 * Health of the mob
 	 */
@@ -72,6 +75,7 @@ public final class GameSettings {
 	/************************************************************
 	 * Private constructor
 	 ***********************************************************/
+	
 	/**
 	 * Private constructor - so there can't be an instance of it
 	 */
@@ -81,6 +85,7 @@ public final class GameSettings {
 	/************************************************************
 	 * Getter of the player values
 	 ***********************************************************/
+	
 	/**
 	 * @return Returns the default of the player name
 	 */
@@ -105,7 +110,8 @@ public final class GameSettings {
 	
 	/************************************************************
 	 * Getter of the tower values
-	 ************************************************************
+	 ************************************************************/
+	
 	/**
 	 * @return - Returns the default damage of the tower
 	 */
@@ -143,7 +149,8 @@ public final class GameSettings {
 	
 	/************************************************************
 	 * Getter of the mob values
-	 ************************************************************
+	 ************************************************************/
+	
 	 /**
 	 * @return - Returns the default health of the mob
 	 */

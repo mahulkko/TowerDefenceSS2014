@@ -16,25 +16,26 @@ import de.htwg.towerdefence2014.util.enums.FieldType;
  */
 public class PlayingField implements IPlayingField {
 	
-	/**
-     * Logger for log4j connection
-     */
+	/************************************************************
+	 * Private variables
+	 ***********************************************************/
+	
+	/** Logger for log4j connection */
     private static Logger log = Logger.getLogger("TowerDefence.Model.PlayingField");
     
-    /**
-     * Playing field array
-     */
+    /** Playing field array */
  	private Field field[][];  
  	
- 	/**
- 	 * Size x of the playing field
- 	 */
+ 	/** Size x of the playing field */
  	private int sizeX;
  	
- 	/**
- 	 * Size y of the playing field
- 	 */
+ 	/** Size y of the playing field */
  	private int sizeY;
+ 	
+ 	
+ 	/************************************************************
+	 * Public constructor
+	 ***********************************************************/
  	
  	/**
  	 * Default constructor of the playing field
@@ -57,6 +58,11 @@ public class PlayingField implements IPlayingField {
 		this.init();
  	}
     
+ 	
+ 	/************************************************************
+	 * Public methods
+	 ***********************************************************/
+ 	
  	@Override
 	/**
 	 * <b>Initialize the playing field</b>
@@ -267,6 +273,11 @@ public class PlayingField implements IPlayingField {
 			}
 		}
 	}
+ 	
+ 	
+ 	/************************************************************
+	 * Private methods
+	 ***********************************************************/
  	
  	/**
  	 * <b>Checks the bounds of the playing field</b>

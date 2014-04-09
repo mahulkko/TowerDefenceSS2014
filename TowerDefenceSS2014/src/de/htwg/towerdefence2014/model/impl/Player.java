@@ -12,26 +12,27 @@ import de.htwg.towerdefence2014.model.IPlayer;
  */
 public class Player implements IPlayer {
 
-	/**
-	 * Name of the player
-	 */
+	/************************************************************
+	 * Private variables
+	 ***********************************************************/
+	
+	/** Name of the player */
 	private String name;
 	
-	/**
-	 * Money of the player
-	 */
+	/** Money of the player */
 	private int money;
 	
-	/**
-	 * Life of the player
-	 */
+	/** Life of the player */
 	private int life;
 	
-	/**
-     * Logger for log4j connection
-     */
+	/** Logger for log4j connection */
     private static Logger log = Logger.getLogger("TowerDefence.Model.Player");
 	
+    
+    /************************************************************
+	 * Public constructor
+	 ***********************************************************/
+    
     /**
      * Constructor Player - Uses the default configuration from the GameSettings
      */
@@ -54,6 +55,11 @@ public class Player implements IPlayer {
 		this.money = money;
 		log.info("Added new Player with name: " + this.name + " | Life: " + this.life + " | Money: " + this.money);
 	}
+	
+	
+	/************************************************************
+	 * Public methods
+	 ***********************************************************/
 	
 	@Override
 	/**

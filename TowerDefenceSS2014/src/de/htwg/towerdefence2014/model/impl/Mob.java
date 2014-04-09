@@ -12,20 +12,23 @@ import de.htwg.towerdefence2014.model.IMob;
  */
 public class Mob implements IMob {
 	
-	/**
-     * Logger for log4j connection
-     */
+	/************************************************************
+	 * Private variables
+	 ***********************************************************/
+	
+	/** Logger for log4j connection */
     private static Logger log = Logger.getLogger("TowerDefence.Model.Tower");
     
-    /**
-     * Current health of the mob
-     */
+    /** Current health of the mob */
 	private int health;	
 	
-	/**
-	 * Speed of the mob
-	 */
+	/** Speed of the mob */
 	private int speed;
+	
+	
+	/************************************************************
+	 * Public constructor
+	 ***********************************************************/
 	
 	/**
 	 * Default constructor - initialize a mob with the default values
@@ -46,6 +49,11 @@ public class Mob implements IMob {
 		this.speed = speed;
 		log.info("Added new mob with health: " + this.health + " | Speed: " + this.speed);
 	}
+	
+	
+	/************************************************************
+	 * Public methods
+	 ***********************************************************/
 	
 	@Override
 	/**

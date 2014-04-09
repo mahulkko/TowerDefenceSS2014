@@ -14,45 +14,38 @@ import de.htwg.towerdefence2014.util.GameHelper;
  */
 public class Tower implements ITower {
 	
-	/**
-	 * 100 as a constant
-	 */
+	/************************************************************
+	 * Private Variables
+	 ***********************************************************/
+	
+	/** 100 as a constant */
 	private static final double HUNDRED = 100.0;
 
-	/**
-	 * 0.5 as a constant
-	 */
+	/** 0.5 as a constant */
 	private static final double HALF = 0.5;
 
-	/**
-     * Logger for log4j connection
-     */
+	/** Logger for log4j connection */
     private static Logger log = Logger.getLogger("TowerDefence.Model.Tower");
 
-	/**
-	 * Damage of the tower
-	 */
+	/** Damage of the tower */
 	private int damage;
 
-	/**
-	 * Range of the tower
-	 */
+	/** Range of the tower */
 	private int range;
 
-	/**
-	 * Speed of the tower
-	 */
+	/** Speed of the tower */
 	private int speed;
 
-	/**
-	 * Number of shoots from the tower. With this parameter the tower can deal splash damage on each round.
-	 */
+	/** Number of shoots from the tower. With this parameter the tower can deal splash damage on each round. */
 	private int numberShoot;
 
-	/**
-	 * Hitrate of the tower. Hitrate is the change to deal a hit with max damage.
-	 */
+	/** Hitrate of the tower. Hitrate is the change to deal a hit with max damage. */
 	private double hitrate; 
+	
+	
+	/************************************************************
+	 * Public constructor
+	 ***********************************************************/
 	
 	/**
 	 * Default constructor - initialize a tower with the default values
@@ -83,6 +76,11 @@ public class Tower implements ITower {
 		log.info("Added new tower with damage: " + this.damage + " | Range: " + this.range + " | Speed: " 
 				+ this.speed + " | Number of Shoot: " + this.numberShoot + " | Hitrate: " + this.hitrate);
 	}
+	
+	
+	/************************************************************
+	 * Public methods
+	 ***********************************************************/
 	
 	@Override
 	/**
@@ -173,7 +171,7 @@ public class Tower implements ITower {
     	int random = (int)(GameHelper.random(1.0, HUNDRED) + HALF);
     	
 		// Random integer is bigger than the hitrate - so the tower has hit the target
-		if ( random <= this.hitrate * HUNDRED ) {
+		if (random <= this.hitrate * HUNDRED) {
 			return this.damage;
 			
 		// Calculate the smaller damage of the tower

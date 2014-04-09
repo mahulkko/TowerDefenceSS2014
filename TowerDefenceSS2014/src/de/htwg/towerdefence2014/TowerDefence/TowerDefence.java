@@ -9,6 +9,10 @@ import org.apache.log4j.BasicConfigurator;
  */
 public class TowerDefence {
 
+	/************************************************************
+	 * Main function
+	 ***********************************************************/
+	
 	/**
 	 * <b>Main function of the tower defence game</b>
 	 * @param args - not used at the moment

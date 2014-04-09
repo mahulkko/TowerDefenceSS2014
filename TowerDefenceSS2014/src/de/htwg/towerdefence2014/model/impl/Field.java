@@ -13,20 +13,23 @@ import de.htwg.towerdefence2014.util.enums.FieldType;
  */
 public class Field {
 	
-	/**
-     * Logger for log4j connection
-     */
+	/************************************************************
+	 * Private variables
+	 ***********************************************************/
+	
+	/** Logger for log4j connection */
     private static Logger log = Logger.getLogger("TowerDefence.Model.Field");
     
-	/**
-	 * Instance of the tower for the field
-	 */
+	/** Instance of the tower for the field */
 	private ITower tower;
 	
-	/**
-	 * List of all mobs on the field
-	 */
+	/** List of all mobs on the field */
 	private List<IMob> mobs;
+	
+	
+	/************************************************************
+	 * Public constructor
+	 ***********************************************************/
 	
 	/**
 	 * Default constructor of the field
@@ -37,13 +40,18 @@ public class Field {
 		this.mobs = new LinkedList<IMob>();
 	}
 
+	
+	/************************************************************
+	 * Public methods
+	 ***********************************************************/
+	
 	/**
 	 * <b>Set a tower on the playing field</b>
 	 * @param tower - Instance of the tower
 	 * @return Returns true when the tower is set otherwise false
 	 */
 	public boolean setTower(ITower tower) {
-		if(!this.isSetTower() && this.getNumberOfMobs() == 0) {
+		if (!this.isSetTower() && this.getNumberOfMobs() == 0) {
 			this.tower = tower;
 			log.info("Added a new tower on the field");
 			return true;
@@ -80,7 +88,7 @@ public class Field {
 	 * @return Returns true when there is a tower otherwise false
 	 */
 	public boolean isSetTower() {
-		if(this.tower == null) {
+		if (this.tower == null) {
 			return false;
 		}
 		return true;
@@ -92,7 +100,7 @@ public class Field {
 	 * @return Returns true when the mob is set otherwise false
 	 */
 	public boolean setMob(IMob mob) {
-		if(!this.isSetTower()) {
+		if (!this.isSetTower()) {
 			this.mobs.add(mob);
 			log.info("Set a new mob on the field");
 			return true;
@@ -107,7 +115,7 @@ public class Field {
 	 * @return Returns true when the mobs can be set otherwise false 
 	 */
 	public boolean setListMob(List<IMob> mobs) {
-		if(!this.isSetTower()) {
+		if (!this.isSetTower()) {
 			this.mobs.addAll(mobs);
 			log.info("Set a new list of mobs on the field");
 			return true;
@@ -136,7 +144,7 @@ public class Field {
 	 * @return Returns true when the mobs can be deleted otherwise false
 	 */
 	public boolean deleteAllMobs() {
-		if(!this.mobs.isEmpty()) {
+		if (!this.mobs.isEmpty()) {
 			this.mobs.clear();
 			log.info("Delete all mobs on the field");
 			return true;
@@ -151,9 +159,9 @@ public class Field {
 	 */
 	public boolean deleteDeadMobs() {
 		boolean del = false;
-		for(int i = 0; i<this.mobs.size(); i++) {
+		for (int i = 0; i < this.mobs.size(); ++i) {
 			IMob m = this.mobs.get(i);
-			if(m.isDead()) {
+			if (m.isDead()) {
 				this.mobs.remove(i);
 				del = true;
 			}
@@ -166,7 +174,7 @@ public class Field {
 	 * @return Returns the type of the field
 	 */
 	public FieldType getTypeOf() {
-		if(this.isSetTower()) {
+		if (this.isSetTower()) {
 			return FieldType.TOWER;
 		} else if (this.getNumberOfMobs() != 0) {
 			return FieldType.MOB;

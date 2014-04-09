@@ -1,9 +1,13 @@
 package de.htwg.towerdefence2014.util.enums;
 
+/************************************************************
+ * Enum FieldType
+ ***********************************************************/
+
 /**
  * Enum for the different types on the field
  * <br>
- * <b>NONE, TOWER or MOB</b>
+ * <b>NONE, TOWER, MOB or UNDEFINED</b>
  * @author Christoph Knetschke and Martin Hulkkonen
  */
 public enum FieldType {
