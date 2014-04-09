@@ -14,29 +14,19 @@ import de.htwg.towerdefence2014.util.enums.FieldType;
  */
 public class FieldTest extends TestCase {
 	
-	/**
-	 * Instance of the field
-	 */
+	/** Instance of the field */
 	Field field;
 	
-	/**
-	 * Instance of the tower
-	 */
+	/** Instance of the tower */
 	ITower tower;
 	
-	/**
-	 * Mob instance 1
-	 */
+	/** Mob instance 1 */
 	IMob mob;
 	
-	/**
-	 * Mob instance 2
-	 */
+	/** Mob instance 2 */
 	IMob mob2;
 	
-	/**
-	 * mob instance 3
-	 */
+	/** mob instance 3 */
 	IMob mob3;
 	
 	/**
@@ -108,7 +98,5 @@ public class FieldTest extends TestCase {
 		
 		assertEquals(true, field.setListMob(list));
 		assertEquals(list, field.getMobs());
-		
-		
 	}
 }

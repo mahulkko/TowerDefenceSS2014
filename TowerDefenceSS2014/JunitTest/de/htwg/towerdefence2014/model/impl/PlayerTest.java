@@ -10,27 +10,19 @@ import junit.framework.TestCase;
  */
 public class PlayerTest extends TestCase {
 	
-	/**
-	 * Player instance1
-	 */
+	/** Player instance1 */
 	IPlayer player1;
 	
-	/**
-	 * Player instance2
-	 */
+	/** Player instance2 */
 	IPlayer player2;
 	
-	/**
-	 * Set up the test
-	 */
+	/** Set up the test */
 	public void setUp() throws IOException {
 		player1 = new Player();
 		player2 = new Player("test", 10, 100);
 	}
 	
-	/**
-	 * Tests for the player
-	 */
+	/** Tests for the player */
 	public void testDoc() {
 		
 		// Test for player1
@@ -55,7 +47,5 @@ public class PlayerTest extends TestCase {
 		
 		// Get money
 		assertEquals(100, player2.getMoney());
-		
 	}
-
 }

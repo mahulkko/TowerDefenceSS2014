@@ -11,19 +11,13 @@ import junit.framework.TestCase;
  */
 public class TowerTest extends TestCase {
 	
-	/**
-	 * Tower instance one
-	 */
+	/** Tower instance one */
 	ITower tower;
 	
-	/**
-	 * Tower instance two
-	 */
+	/** Tower instance two */
 	ITower tower2;
 	
-	/**
-	 * Set up the test
-	 */
+	/** Set up the test */
 	public void setUp() throws IOException {
 		tower = new Tower(1, 1, 1, 1, 1.0);
 		tower2 = new Tower();

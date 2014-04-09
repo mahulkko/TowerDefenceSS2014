@@ -10,14 +10,10 @@ import junit.framework.TestCase;
  */
 public class MobTest extends TestCase {
 	
-	/**
-	 * Mob instance 1
-	 */
+	/** Mob instance 1 */
 	IMob mob;
 	
-	/**
-	 * Mob instance 2
-	 */
+	/** Mob instance 2 */
 	IMob mob2;
 	
 	/**
