@@ -7,6 +7,11 @@
   <name>TowerDefenceSS2014</name>
   <description>TowerDefence Game SA</description>
   
+  <properties>
+  	<jacoco.out.path>${session.executionRootDirectory}/target</jacoco.out.path>
+  	<sonar.jacoco.itReportPath>${env.WORKSPACE}/target/${jacoco.out.file}</sonar.jacoco.itReportPath>
+  </properties>
+
    <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>JunitTest</testSourceDirectory>
@@ -20,29 +25,38 @@
     </resources>
      <plugins>
      <plugin>
-	  <groupid>org.jacoco</groupid>
-	  <artifactid>jacoco-maven-plugin</artifactid>
-	  <version>0.5.5.201112152213</version>
-	  <configuration>
-	   <destfile>${basedir}/target/coverage-reports/jacoco-unit.exec</destfile>
-	   <datafile>${basedir}/target/coverage-reports/jacoco-unit.exec</datafile>
-	  </configuration>
+	  <groupId>org.jacoco</groupId>
+	  <artifactId>jacoco-maven-plugin</artifactId>
+	  <version>0.6.3.201306030806</version>
 	  <executions>
-	   <execution>
-	    <id>jacoco-initialize</id>
-	    <goals>
-	     <goal>prepare-agent</goal>
-	    </goals>
-	   </execution>
-	   <execution>
-	    <id>jacoco-site</id>
-	    <phase>package</phase>
-	    <goals>
-	     <goal>report</goal>
-	    </goals>
-	   </execution>
+	    <execution>
+	      <id>prepare-agent</id>
+	      <goals>
+	        <goal>prepare-agent</goal>
+	      </goals>
+	      <configuration>
+	        <destFile>${jacoco.out.path}/${jacoco.out.file}</destFile>
+	        <propertyName>jacoco.agent.arg</propertyName>
+	      </configuration>
+	    </execution>
 	  </executions>
-	 </plugin>
+	</plugin>
+	<plugin>
+	  <artifactId>maven-failsafe-plugin</artifactId>
+	  <version>2.16</version>
+	  <executions>
+	    <execution>
+	      <id>verify</id>
+	      <goals>
+	        <goal>integration-test</goal>
+	        <goal>verify</goal>
+	      </goals>
+	      <configuration>
+	        <argLine>${jacoco.agent.arg}</argLine>
+	      </configuration>
+	    </execution>
+	  </executions>
+	</plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.1</version>
