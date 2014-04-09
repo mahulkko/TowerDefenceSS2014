@@ -25,12 +25,12 @@ public class Db4oDatabaseTest extends TestCase {
 	 * Tests for the field
 	 */
 	public void testDoc() {
-		db4o.create();
-		db4o.update(pField);
-		
-		assertEquals(pField, db4o.read());
-		
-		db4o.update(pField);
+//		db4o.create();
+//		db4o.update(pField);
+//		
+//		assertEquals(pField, db4o.read());
+//		
+//		db4o.update(pField);
 //		db4o.delete(pField);
 	}
 }
