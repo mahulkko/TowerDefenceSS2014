@@ -31,6 +31,6 @@ public class Db4oDatabaseTest extends TestCase {
 		assertEquals(pField, db4o.read());
 		
 		db4o.update(pField);
-		db4o.delete(pField);
+//		db4o.delete(pField);
 	}
 }
