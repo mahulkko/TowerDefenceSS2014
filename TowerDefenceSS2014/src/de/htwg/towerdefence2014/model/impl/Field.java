@@ -8,7 +8,7 @@ import de.htwg.towerdefence2014.model.ITower;
 import de.htwg.towerdefence2014.util.enums.FieldType;
 
 /**
- * <b>Field Class</b>
+ * <b>Field class</b>
  * @author Christoph Knetschke and Martin Hulkkonen
  */
 public class Field {
