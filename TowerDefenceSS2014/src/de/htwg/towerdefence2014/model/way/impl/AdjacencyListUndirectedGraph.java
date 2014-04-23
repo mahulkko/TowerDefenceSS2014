@@ -8,15 +8,30 @@ import java.util.Map;
 import de.htwg.towerdefence2014.model.way.IUndirectedGraph;
 import de.htwg.towerdefence2014.util.Edge;
 
-
+/**
+ * <b>AdjacencyListUndirectedGraph class</b>
+ * @author Christoph Knetschke and Martin Hulkkonen
+ */
 public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 
+	/************************************************************
+	 * Private variables
+	 ***********************************************************/
+	
+	/** Adjacency List */
 	private HashMap<V,HashMap<V,Double>> adjacencyList = new HashMap<V,HashMap<V,Double>>();
+	
+	/**	Edge list */
 	private List<Edge<V>> edgeList = new LinkedList<Edge<V>>();
 
+	
+	/************************************************************
+	 * Public methods
+	 ***********************************************************/
+	
 	@Override
 	public boolean addVertex(V v) {
-		if(!adjacencyList.containsKey(v)) {
+		if (!adjacencyList.containsKey(v)) {
 			adjacencyList.put(v,new HashMap<V, Double>());
 			return true;
 		}		
@@ -30,9 +45,9 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 
 	@Override
 	public boolean addEdge(V v, V w, double weight) {
-		if( adjacencyList.containsKey(v) && adjacencyList.containsKey(w) ) {
+		if (adjacencyList.containsKey(v) && adjacencyList.containsKey(w)) {
 			//edge is already listed
-			if(adjacencyList.get(v).containsKey(w)) {
+			if (adjacencyList.get(v).containsKey(w)) {
 				return false;
 			}
 			//put in hashmap of v
@@ -50,9 +65,9 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 	}
 	
 	public boolean deleteAllEdgeOn(V v){
-		if(this.adjacencyList.containsKey(v)) {
+		if (this.adjacencyList.containsKey(v)) {
 			List<V> l = this.getAdjacentVertexList(v);
-			for ( Iterator<V> i = l.iterator(); i.hasNext(); )
+			for (Iterator<V> i = l.iterator(); i.hasNext();)
 			   {
 				 this.delteEdge(v, i.next());
 			   }
@@ -62,19 +77,19 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 	}
 	
 	public boolean delteEdge(V v, V w){
-		if(this.containsEdge(v, w)) {
+		if (this.containsEdge(v, w)) {
 			this.adjacencyList.get(v).remove(w);
 			this.adjacencyList.get(w).remove(v);
 			
-			for(int i = 0; i < this.getNumberOfEdges(); i++) {
+			for (int i = 0; i < this.getNumberOfEdges(); ++i) {
 				Edge<V> e = this.edgeList.get(i);
-				 if(e.getSource() == v && e.getTarget() == w) {
+				 if (e.getSource() == v && e.getTarget() == w) {
 					 this.edgeList.remove(i);
 				 }
 			}
-			for(int i = 0; i < this.getNumberOfEdges(); i++) {
+			for (int i = 0; i < this.getNumberOfEdges(); ++i) {
 				Edge<V> e = this.edgeList.get(i);
-				 if(e.getSource() == w && e.getTarget() == v) {
+				 if (e.getSource() == w && e.getTarget() == v) {
 					 this.edgeList.remove(i);
 				 }
 			}
@@ -85,7 +100,7 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 	
 	@Override
 	public boolean containsVertex(V v) {
-		if(this.adjacencyList.containsKey(v)) {
+		if (this.adjacencyList.containsKey(v)) {
 			return true;
 		}
 		return false;
@@ -93,7 +108,7 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 
 	@Override
 	public boolean containsEdge(V v, V w) {
-		if(this.adjacencyList.get(v).containsKey(w)) {
+		if (this.adjacencyList.get(v).containsKey(w)) {
 			return true;
 		}
 		return false;
@@ -101,8 +116,8 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 
 	@Override
 	public double getWeight(V v, V w) {
-		if(adjacencyList.containsKey(v) && adjacencyList.containsKey(w)) {
-			if(!adjacencyList.get(v).containsKey(w) || v.equals(w)) {
+		if (adjacencyList.containsKey(v) && adjacencyList.containsKey(w)) {
+			if (!adjacencyList.get(v).containsKey(w) || v.equals(w)) {
 				return 0.0;
 			}
 		return adjacencyList.get(v).get(w);
@@ -123,7 +138,7 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 	@Override
 	public List<V> getVertexList() {
 		List<V> vertices = new LinkedList<V>();
-		for(Map.Entry<V, HashMap<V, Double>> e : adjacencyList.entrySet()) {
+		for (Map.Entry<V, HashMap<V, Double>> e : adjacencyList.entrySet()) {
 			vertices.add(e.getKey());
 		}
 		return vertices;
@@ -137,10 +152,10 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 	@Override
 	public List<V> getAdjacentVertexList(V v) {
 		List<V> vertices = new LinkedList<V>();
-		if(adjacencyList.containsKey(v)) {
+		if (adjacencyList.containsKey(v)) {
 			HashMap<V, Double> hm = adjacencyList.get(v);
 			
-			for( Map.Entry<V, Double> e : hm.entrySet() ) {
+			for (Map.Entry<V, Double> e : hm.entrySet()) {
 				vertices.add(e.getKey());
 			}
 		}
@@ -150,9 +165,9 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 	@Override
 	public List<Edge<V>> getIncidentEdgeList(V v) {
 		List<Edge<V>> edges = new LinkedList<Edge<V>>();
-		if(adjacencyList.containsKey(v)) {
-			for(Edge<V> e : edgeList ) {
-				if(e.getSource().equals(v)) {
+		if (adjacencyList.containsKey(v)) {
+			for (Edge<V> e : edgeList ) {
+				if (e.getSource().equals(v)) {
 					edges.add(e);
 				}
 			}
@@ -162,7 +177,7 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 
 	@Override
 	public int getDegree(V v) {
-		if(adjacencyList.containsKey(v)) {
+		if (adjacencyList.containsKey(v)) {
 			return adjacencyList.get(v).size();
 		}
 	return -1;
