@@ -11,13 +11,13 @@ public class Edge<V> {
 	 ***********************************************************/
 
 	/** Start node */
-	final private V source; 
+	private final V source; 
 	 
 	/** Finish node */
-	final private V target;
+	private final V target;
 	 
 	/** Weight of the edge */
-	final private double weight;
+	private final double weight;
 	
 
     /************************************************************
