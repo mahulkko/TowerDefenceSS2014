@@ -1,6 +1,7 @@
 package de.htwg.towerdefence2014.TowerDefence;
 
 import org.apache.log4j.BasicConfigurator;
+import de.htwg.towerdefence2014.gui.impl.GUITowerDefence;
 
 /**
  * @author Christoph Knetschke and Martin Hulkkonen
@@ -23,5 +24,8 @@ public class TowerDefence {
 	     * Logger
 	     */
 	    BasicConfigurator.configure();
+	    
+	    // Start the gui - only for testing right now
+	    GUITowerDefence gui = new GUITowerDefence();
 	}
 }
