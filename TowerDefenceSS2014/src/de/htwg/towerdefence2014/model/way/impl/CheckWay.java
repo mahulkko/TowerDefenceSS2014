@@ -28,15 +28,15 @@ public class CheckWay implements ICheckWay {
 		this.sizeY = sizeY;       
 		
 		// Add Fields to the List
-		for(int i = 1; i<=(sizeX*sizeY); i++) {
+		for(int i = 1; i <= (sizeX * sizeY); ++i) {
 			  g.addVertex(i);
 		}
-		for(int i = 1; i<=(sizeX*sizeY); i++) {
+		for(int i = 1; i <= (sizeX * sizeY); ++i) {
 		   if((i%sizeX) != 0) {
-			 g.addEdge(i,i+1);
+			 g.addEdge(i, i + 1);
 		   }
-		   if(i<=(sizeX*sizeY)-sizeX) {
-			 g.addEdge(i,i+this.sizeX);
+		   if(i <= (sizeX*sizeY)-sizeX) {
+			 g.addEdge(i, i + this.sizeX);
 		   }
 		}
 	}
@@ -50,20 +50,20 @@ public class CheckWay implements ICheckWay {
 	public boolean addWayPoint(int x, int y) {
 		int vertex = this.getNumberofVertex(x, y);
 		boolean check = false;
-		if((vertex%sizeX) != 0) {
+		if((vertex % sizeX) != 0) {
 		   g.addEdge(vertex,vertex+1);
 		   check = true;
 		}
-		if(vertex<=(sizeX*sizeY)-sizeX) {
-		   g.addEdge(vertex,vertex+this.sizeX);
+		if(vertex<=(sizeX * sizeY) - sizeX) {
+		   g.addEdge(vertex, vertex + this.sizeX);
 		   check = true;
 		}
-		if(vertex-this.sizeX > 0) {
-			g.addEdge(vertex,vertex-this.sizeX);
+		if(vertex - this.sizeX > 0) {
+			g.addEdge(vertex, vertex - this.sizeX);
 			check = true;
 		}
-		if((vertex-1)%this.sizeX != 0) {
-			g.addEdge(vertex,vertex-1);
+		if((vertex - 1) % this.sizeX != 0) {
+			g.addEdge(vertex, vertex - 1);
 			check = true;
 		}
 		return check;
@@ -72,7 +72,7 @@ public class CheckWay implements ICheckWay {
 	// Returns the Number of the Vertex
 	public int getNumberofVertex(int x, int y) {
 		if(this.sizeX > x && this.sizeY > y) {
-		return ((this.sizeX)*(y+1)) - ((this.sizeX-1)-x);
+		return ((this.sizeX) * (y + 1)) - ((this.sizeX - 1) - x);
 		}
 		return 0;
 	}	
@@ -80,9 +80,9 @@ public class CheckWay implements ICheckWay {
 	// Returns the Coord of the Vertex
 	public Coord getCoordOfVertex(int vertex) {
 		Coord c = new Coord();
-		if((this.sizeX*this.sizeY >= vertex) && (vertex > 0)) {
-		  c.setY((vertex-1)/this.sizeX);
-		  c.setX(((vertex-1)-this.sizeX*c.getY()));
+		if((this.sizeX * this.sizeY >= vertex) && (vertex > 0)) {
+		  c.setY((vertex - 1) / this.sizeX);
+		  c.setX(((vertex - 1) - this.sizeX * c.getY()));
 		  return c;
 		}
 		return null;
@@ -92,7 +92,7 @@ public class CheckWay implements ICheckWay {
 	public boolean existWay(int startX, int startY, int endX, int endY) {
 		int vertex1 = this.getNumberofVertex(startX, startY);
 		int vertex2 = this.getNumberofVertex(endX, endY);
-		return this.path.searchShortestPath(vertex1,vertex2);
+		return this.path.searchShortestPath(vertex1, vertex2);
 	}
 	
 	// Gets a List of Coords with the shortest way
@@ -100,7 +100,7 @@ public class CheckWay implements ICheckWay {
 		List<Integer> l = this.path.getShortestPath();
 		List<Coord> c = new LinkedList<Coord>();
 		if(l != null) {
-			for(int i = 0; i<l.size(); i++) {
+			for(int i = 0; i < l.size(); ++i) {
 				c.add(this.getCoordOfVertex(l.get(i)));
 			}
 			return c;
