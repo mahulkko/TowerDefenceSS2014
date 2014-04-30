@@ -13,7 +13,7 @@ public class Edge<V> {
 	 ***********************************************************/
 
 	/** Logger for log4j connection */
-    private static Logger log = Logger.getLogger("TowerDefence.util.Edge");
+    private static Logger log = Logger.getLogger("TowerDefence.Util.Edge");
     
 	/** Start node */
 	private final V source; 

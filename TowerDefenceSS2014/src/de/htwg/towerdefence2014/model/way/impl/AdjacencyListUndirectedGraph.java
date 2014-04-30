@@ -5,6 +5,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.log4j.Logger;
+
 import de.htwg.towerdefence2014.model.way.IUndirectedGraph;
 import de.htwg.towerdefence2014.util.Edge;
 
@@ -18,6 +21,9 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 	 * Private variables
 	 ***********************************************************/
 	
+	/** Logger for log4j connection */
+    private static Logger log = Logger.getLogger("TowerDefence.Model.Way.AdjacencyListUndirectedGraph");
+    
 	/** Adjacency List */
 	private HashMap<V,HashMap<V,Double>> adjacencyList = new HashMap<V,HashMap<V,Double>>();
 	
@@ -32,9 +38,11 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 	@Override
 	public boolean addVertex(V v) {
 		if (!adjacencyList.containsKey(v)) {
+			log.info("Add a new vertex to list");
 			adjacencyList.put(v, new HashMap<V, Double>());
 			return true;
-		}		
+		}
+		log.info("Can't add a vertex to list - List contains already this vertex");
 		return false;
 	}
 
@@ -46,34 +54,42 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 	@Override
 	public boolean addEdge(V v, V w, double weight) {
 		if (adjacencyList.containsKey(v) && adjacencyList.containsKey(w)) {
-			//edge is already listed
+
+			// Edge already in the list
 			if (adjacencyList.get(v).containsKey(w)) {
+				log.info("Can't add a new Edge with weight: " + weight + " - Edge already exists");
 				return false;
 			}
-			//put in hashmap of v
-			adjacencyList.get(v).put(w, weight);
-					
-			//put in hashmap of w
-			adjacencyList.get(w).put(v, weight);
-					
-			edgeList.add(new Edge<V>(v,w));
-			edgeList.add(new Edge<V>(w,v));
 			
+			// Put in hashmap of v
+			adjacencyList.get(v).put(w, weight);
+			
+			// Put in hashmap of w
+			adjacencyList.get(w).put(v, weight);
+			
+			// Add new edge in edgelist
+			edgeList.add(new Edge<V>(v ,w));
+			edgeList.add(new Edge<V>(w, v));
+			
+			log.info("Added new Edge with weight: " + weight);
 			return true;
 		}
+		log.info("Can't add a new Edge with weight: " + weight + " - List didn't contains these vertexes");
 		return false;				
 	}
 	
 	@Override
-	public boolean deleteAllEdgeOn(V v){
+	public boolean deleteAllEdgeOn(V v) {
 		if (this.adjacencyList.containsKey(v)) {
 			List<V> l = this.getAdjacentVertexList(v);
 			for (Iterator<V> i = l.iterator(); i.hasNext();)
 			   {
 				 this.delteEdge(v, i.next());
 			   }
+			log.info("Deleted all edges on these vertex");
 			return true;
 		}
+		log.info("Can't delete all edges on vertex - List didn't contain this vertex");
 		return false;
 	}
 	
@@ -95,8 +111,10 @@ public class AdjacencyListUndirectedGraph<V> implements IUndirectedGraph<V>{
 					 this.edgeList.remove(i);
 				 }
 			}
+			log.info("Edge successful deleted");
 			return true;
 		}
+		log.info("Can't delete edge - Edge didn't exists");
 		return false;
 	}
 	

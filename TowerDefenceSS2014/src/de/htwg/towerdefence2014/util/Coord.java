@@ -13,7 +13,7 @@ public class Coord {
 	 ***********************************************************/
 	
 	/** Logger for log4j connection */
-    private static Logger log = Logger.getLogger("TowerDefence.util.Coord");
+    private static Logger log = Logger.getLogger("TowerDefence.Util.Coord");
     
 	/** X - Coordinate */
     private int x;
