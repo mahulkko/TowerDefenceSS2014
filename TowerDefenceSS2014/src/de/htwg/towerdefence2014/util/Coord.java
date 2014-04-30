@@ -1,5 +1,7 @@
 package de.htwg.towerdefence2014.util;
 
+import org.apache.log4j.Logger;
+
 /**
 * <b>Class Coord</b>
 * @author Christoph Knetschke and Martin Hulkkonen
@@ -10,6 +12,9 @@ public class Coord {
 	 * Private variables
 	 ***********************************************************/
 	
+	/** Logger for log4j connection */
+    private static Logger log = Logger.getLogger("TowerDefence.util.Coord");
+    
 	/** X - Coordinate */
     private int x;
     
@@ -22,19 +27,21 @@ public class Coord {
 	 ***********************************************************/
     
     /**
-     * Default constructor of the coord
+     * Default constructor of the coordinate
      */
-	public Coord(){
+	public Coord() {
+		log.info("Created a new coordinate with x: 0 and y: 0");
 		this.x = 0;
 		this.y = 0;
 	}
 	
 	/**
-	 * Constructor of the coord
+	 * Constructor of the coordinate
 	 * @param x - X Coordinate
 	 * @param y - Y Coordinate
 	 */
-	public Coord(int x, int y){
+	public Coord(int x, int y) {
+		log.info("Created a new coordinate with x: "+ x +" and y: " + y);
 		this.x = x;
 		this.y = y;
 	}
@@ -59,9 +66,11 @@ public class Coord {
 	 */
 	public boolean setX(int x) {
 		if (x >= 0) {
+			log.info("Changed coordinate x from " + this.x + " to " + x);
 			this.x = x;
 			return true;
 		}
+		log.info("Can't change coordinate x from " + this.x + " to " + x + " - Value must be positive");
 		return false;
 	}
 	 
@@ -80,9 +89,11 @@ public class Coord {
 	 */
 	public boolean setY(int y) {
 		if (y >= 0) {
+			log.info("Changed coordinate y from " + this.y + " to " + y);
 			this.y = y;
 			return true;
 		}
+		log.info("Can't change coordinate y from " + this.y + " to " + y + " - Value must be positive");
 		return false;
 	}
 }

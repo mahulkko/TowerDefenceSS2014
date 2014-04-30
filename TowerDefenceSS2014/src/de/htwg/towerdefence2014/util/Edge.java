@@ -1,5 +1,7 @@
 package de.htwg.towerdefence2014.util;
 
+import org.apache.log4j.Logger;
+
 /**
 * <b>Class Edge</b>
 * @author Christoph Knetschke and Martin Hulkkonen
@@ -10,6 +12,9 @@ public class Edge<V> {
 	 * Private variables
 	 ***********************************************************/
 
+	/** Logger for log4j connection */
+    private static Logger log = Logger.getLogger("TowerDefence.util.Edge");
+    
 	/** Start node */
 	private final V source; 
 	 
@@ -30,6 +35,7 @@ public class Edge<V> {
 	 * @param target - Finish node
 	 */
 	public Edge(V source, V target) {
+		log.info("Created a new Edge with the standart weight of 1.0");
 		this.source = source;
 		this.target = target;
 		this.weight = 1.0;
@@ -42,6 +48,7 @@ public class Edge<V> {
 	 * @param weight - Weight of the edge
 	 */
 	public Edge(V source, V target, double weight) {
+		log.info("Created a new Edge with a weight of " + weight);
 	    this.source = source;
 	    this.target = target;
 	    this.weight = weight;
