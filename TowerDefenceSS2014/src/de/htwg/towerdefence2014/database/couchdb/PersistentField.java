@@ -1,22 +1,12 @@
 package de.htwg.towerdefence2014.database.couchdb;
 
-import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import org.ektorp.support.CouchDbDocument;
+import org.ektorp.support.TypeDiscriminator;
 
-@Entity
-@Table(name = "TDField")
-public class PersistentField implements Serializable {
+
+public class PersistentField extends CouchDbDocument {
 	
 	/************************************************************
 	 * Private variables
@@ -24,20 +14,19 @@ public class PersistentField implements Serializable {
 
 	private static final long serialVersionUID = 7510732657083022784L;
 	
-	@Id
-	@GeneratedValue
-	@Column(name = "pFieldID")
+
+	/**
+	 * @TypeDiscriminator is used to mark properties that makes this class's
+	 *                    documents unique in the database.
+	 */
+	@TypeDiscriminator
 	private long id;
 	
-	@ManyToOne
-	@JoinColumn(name = "PlayingFieldID")
 	private PersistentPlayingField pField;
 	
-//	@OneToOne
-//	private PersistentTower tower;
-//	
-//	@OneToMany
-//	private List<PersistentMob> mobs;
+	private PersistentTower tower;
+	
+	private List<PersistentMob> mobs;
 	
 	
 	/************************************************************
@@ -51,22 +40,22 @@ public class PersistentField implements Serializable {
 	 * Public methods
 	 ***********************************************************/
 
-//	public PersistentTower getTower() {
-//		return tower;
-//	}
-//
-//
-//	public void setTower(PersistentTower tower) {
-//		this.tower = tower;
-//	}
-//
-//
-//	public List<PersistentMob> getMobs() {
-//		return mobs;
-//	}
-//
-//
-//	public void setMobs(List<PersistentMob> mobs) {
-//		this.mobs = mobs;
-//	}
+	public PersistentTower getTower() {
+		return tower;
+	}
+
+
+	public void setTower(PersistentTower tower) {
+		this.tower = tower;
+	}
+
+
+	public List<PersistentMob> getMobs() {
+		return mobs;
+	}
+
+
+	public void setMobs(List<PersistentMob> mobs) {
+		this.mobs = mobs;
+	}
 }

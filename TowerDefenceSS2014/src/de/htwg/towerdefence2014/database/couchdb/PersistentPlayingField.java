@@ -1,20 +1,12 @@
 package de.htwg.towerdefence2014.database.couchdb;
 
-import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import org.ektorp.support.CouchDbDocument;
+import org.ektorp.support.TypeDiscriminator;
 
 
-@Entity
-@Table(name = "TDPlayingField")
-public class PersistentPlayingField implements Serializable {
+public class PersistentPlayingField extends CouchDbDocument {
 	
 	/************************************************************
 	 * Private variables
@@ -22,18 +14,18 @@ public class PersistentPlayingField implements Serializable {
 	
 	private static final long serialVersionUID = -1221187500228103205L;
 	
-	@Id
-	@GeneratedValue
-	@Column(name = "playingFieldID")
+
+	/**
+	 * @TypeDiscriminator is used to mark properties that makes this class's
+	 *                    documents unique in the database.
+	 */
+	@TypeDiscriminator
 	private long playingFieldID;
 	
-	@Column(name = "SizeX")
 	private int sizeX;
 	
-	@Column(name = "SizeY")
 	private int sizeY;
 	
-	@OneToMany(mappedBy = "pField")
 	private List<PersistentField> fields;
 	
 	/************************************************************
@@ -67,11 +59,11 @@ public class PersistentPlayingField implements Serializable {
 	}
 
 
-//	public PersistentField[][] getFields() {
-//		return fields;
-//	}
-//
-//
+	public List<PersistentField> getFields() {
+		return fields;
+	}
+
+
 	public void setFields(List<PersistentField> field) {
 		this.fields = field;
 	}

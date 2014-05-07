@@ -1,19 +1,10 @@
 package de.htwg.towerdefence2014.database.couchdb;
 
-import java.io.Serializable;
+import org.ektorp.support.CouchDbDocument;
+import org.ektorp.support.TypeDiscriminator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "TDMob")
-public class PersistentMob implements Serializable {
+public class PersistentMob extends CouchDbDocument {
 	
 	/************************************************************
 	 * Private variables
@@ -21,18 +12,18 @@ public class PersistentMob implements Serializable {
 	
 	private static final long serialVersionUID = -1908272019895680801L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
+	/**
+	 * @TypeDiscriminator is used to mark properties that makes this class's
+	 *                    documents unique in the database.
+	 */
+	@TypeDiscriminator
 	private Integer id;
 	
-	@Column(name = "Health")
 	private int health;	
 	
-	@Column(name = "Speed")
 	private int speed;
 	
-	@ManyToOne
-	@JoinColumn(name = "FildID")
 	public PersistentField fild;
 	
 	/************************************************************
@@ -66,12 +57,12 @@ public class PersistentMob implements Serializable {
 		this.speed = speed;
 	}
 	
-//	public PersistentField getFild() {
-//		return fild;
-//	}
-//
-//
-//	public void setFild(PersistentField fild) {
-//		this.fild = fild;
-//	}
+	public PersistentField getFild() {
+		return fild;
+	}
+
+
+	public void setFild(PersistentField fild) {
+		this.fild = fild;
+	}
 }

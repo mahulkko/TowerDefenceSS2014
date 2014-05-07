@@ -1,41 +1,32 @@
 package de.htwg.towerdefence2014.database.couchdb;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.ektorp.support.CouchDbDocument;
+import org.ektorp.support.TypeDiscriminator;
 
 
-@Entity
-@Table(name = "TDTower")
-public class PersistentTower implements Serializable {
+public class PersistentTower extends CouchDbDocument {
 	
 	/************************************************************
 	 * Private variables
 	 ***********************************************************/
 	private static final long serialVersionUID = -8802270163038398649L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
+	/**
+	 * @TypeDiscriminator is used to mark properties that makes this class's
+	 *                    documents unique in the database.
+	 */
+	@TypeDiscriminator
 	private Integer id;
 	
-	@Column(name = "Damage")
 	private int damage;
 
-	@Column(name = "Range")
 	private int range;
 
-	@Column(name = "Speed")
 	private int speed;
 
-	@Column(name = "NumberShoot")
 	private int numberShoot;
 
-	@Column(name = "Hitrate")
 	private double hitrate; 
 	
 	

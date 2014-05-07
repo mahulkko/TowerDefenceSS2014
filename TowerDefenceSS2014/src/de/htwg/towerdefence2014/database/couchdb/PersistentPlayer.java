@@ -1,17 +1,10 @@
 package de.htwg.towerdefence2014.database.couchdb;
 
-import java.io.Serializable;
+import org.ektorp.support.CouchDbDocument;
+import org.ektorp.support.TypeDiscriminator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "TDPlayer")
-public class PersistentPlayer implements Serializable {
+public class PersistentPlayer extends CouchDbDocument {
 
 	/************************************************************
 	 * Private variables
@@ -19,17 +12,17 @@ public class PersistentPlayer implements Serializable {
 	
 	private static final long serialVersionUID = -5550626038474233529L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	/**
+	 * @TypeDiscriminator is used to mark properties that makes this class's
+	 *                    documents unique in the database.
+	 */
+	@TypeDiscriminator
+	private String id;
 	
-	@Column(name = "Name")
 	private String name;
 	
-	@Column(name = "Money")
 	private int money;
 	
-	@Column(name = "Life")
 	private int life;
 	
 	
