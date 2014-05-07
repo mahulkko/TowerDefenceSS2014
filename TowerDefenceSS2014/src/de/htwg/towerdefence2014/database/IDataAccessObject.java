@@ -32,4 +32,9 @@ public interface IDataAccessObject {
 	 * @param object
 	 */
 	void delete(Game game);
+
+	/**
+	 * Delete all existing Objects from the Database
+	 */
+	void deleteAll();
 }

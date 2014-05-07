@@ -82,7 +82,8 @@ public class Db4oDatabase implements IDataAccessObject {
 	public void delete(Game game) {
 		db.delete(game);
 	}
-	
+
+
 	@Override
 	public void deleteAll() {
 		// TODO Auto-generated method stub

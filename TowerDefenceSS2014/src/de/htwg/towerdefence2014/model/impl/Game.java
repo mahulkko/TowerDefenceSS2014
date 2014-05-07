@@ -1,5 +1,7 @@
 package de.htwg.towerdefence2014.model.impl;
 
+import java.io.Serializable;
+
 /**
  * <b>Game class</b>
  * @author Christoph Knetschke and Martin Hulkkonen
@@ -9,6 +11,8 @@ public class Game {
 	/************************************************************
 	 * Private variables
 	 ***********************************************************/
+	
+	private int id;
 	
 	private PlayingField playingField;
 	
@@ -32,6 +36,14 @@ public class Game {
 	 * Public methods
 	 ***********************************************************/
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public PlayingField getPlayingField() {
 		return playingField;
 	}

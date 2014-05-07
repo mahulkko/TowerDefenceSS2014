@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 
 import java.io.IOException;
 
+import de.htwg.towerdefence2014.database.db4o.Db4oDatabase;
 import de.htwg.towerdefence2014.model.impl.Game;
 import de.htwg.towerdefence2014.model.impl.Player;
 import de.htwg.towerdefence2014.model.impl.PlayingField;

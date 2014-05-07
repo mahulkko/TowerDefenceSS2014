@@ -70,7 +70,6 @@ public class HibernateDatabase implements IDataAccessObject {
 	public void delete(Game game) {
 		Transaction tx = null;
 		Session session = null;
-		
 		if (0 != game.getId()) {
 			try {
 				session = HibernateUtil.getInstance().getCurrentSession();
@@ -108,7 +107,7 @@ public class HibernateDatabase implements IDataAccessObject {
 			if (tx != null)
 				tx.rollback();
 			throw new RuntimeException(ex.getMessage());
-		}
+		} 
 	}
 
 	/************************************************************
@@ -227,5 +226,7 @@ public class HibernateDatabase implements IDataAccessObject {
 		
 		return game;
 	}
+
+	
 
 }
