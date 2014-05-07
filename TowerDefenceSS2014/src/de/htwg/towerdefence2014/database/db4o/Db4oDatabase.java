@@ -1,4 +1,4 @@
-package de.htwg.towerdefence2014.database.impl;
+package de.htwg.towerdefence2014.database.db4o;
 
 import java.util.List;
 
@@ -81,5 +81,11 @@ public class Db4oDatabase implements IDataAccessObject {
 	 */
 	public void delete(Game game) {
 		db.delete(game);
+	}
+	
+	@Override
+	public void deleteAll() {
+		// TODO Auto-generated method stub
+		
 	}
 }

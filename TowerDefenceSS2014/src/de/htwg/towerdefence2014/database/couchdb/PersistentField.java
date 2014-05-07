@@ -1,4 +1,4 @@
-package de.htwg.towerdefence2014.database.impl;
+package de.htwg.towerdefence2014.database.couchdb;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,9 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import de.htwg.towerdefence2014.model.impl.PlayingField;
 
 @Entity
 @Table(name = "TDField")
@@ -26,19 +25,19 @@ public class PersistentField implements Serializable {
 	private static final long serialVersionUID = 7510732657083022784L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
-	
-	@Column(name = "Tower")
-	private PersistentTower tower;
-	
-	@OneToMany
-	@Column(name = "Mobs")
-	private List<PersistentMob> mobs;
+	@GeneratedValue
+	@Column(name = "pFieldID")
+	private long id;
 	
 	@ManyToOne
 	@JoinColumn(name = "PlayingFieldID")
-	private PlayingField pField;
+	private PersistentPlayingField pField;
+	
+//	@OneToOne
+//	private PersistentTower tower;
+//	
+//	@OneToMany
+//	private List<PersistentMob> mobs;
 	
 	
 	/************************************************************
@@ -48,27 +47,26 @@ public class PersistentField implements Serializable {
 	public PersistentField () {
 	}
 	
-	
 	/************************************************************
 	 * Public methods
 	 ***********************************************************/
 
-	public PersistentTower getTower() {
-		return tower;
-	}
-
-
-	public void setTower(PersistentTower tower) {
-		this.tower = tower;
-	}
-
-
-	public List<PersistentMob> getMobs() {
-		return mobs;
-	}
-
-
-	public void setMobs(List<PersistentMob> mobs) {
-		this.mobs = mobs;
-	}
+//	public PersistentTower getTower() {
+//		return tower;
+//	}
+//
+//
+//	public void setTower(PersistentTower tower) {
+//		this.tower = tower;
+//	}
+//
+//
+//	public List<PersistentMob> getMobs() {
+//		return mobs;
+//	}
+//
+//
+//	public void setMobs(List<PersistentMob> mobs) {
+//		this.mobs = mobs;
+//	}
 }

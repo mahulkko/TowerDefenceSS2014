@@ -1,4 +1,4 @@
-package de.htwg.towerdefence2014.database.impl;
+package de.htwg.towerdefence2014.database.couchdb;
 
 import java.io.Serializable;
 
@@ -21,7 +21,7 @@ public class PersistentTower implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private Integer id;
 	
 	@Column(name = "Damage")
 	private int damage;

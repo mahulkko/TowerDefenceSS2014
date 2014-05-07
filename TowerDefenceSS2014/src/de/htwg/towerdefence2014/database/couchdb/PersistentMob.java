@@ -1,4 +1,4 @@
-package de.htwg.towerdefence2014.database.impl;
+package de.htwg.towerdefence2014.database.couchdb;
 
 import java.io.Serializable;
 
@@ -23,7 +23,7 @@ public class PersistentMob implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private Integer id;
 	
 	@Column(name = "Health")
 	private int health;	
@@ -66,12 +66,12 @@ public class PersistentMob implements Serializable {
 		this.speed = speed;
 	}
 	
-	public PersistentField getFild() {
-		return fild;
-	}
-
-
-	public void setFild(PersistentField fild) {
-		this.fild = fild;
-	}
+//	public PersistentField getFild() {
+//		return fild;
+//	}
+//
+//
+//	public void setFild(PersistentField fild) {
+//		this.fild = fild;
+//	}
 }

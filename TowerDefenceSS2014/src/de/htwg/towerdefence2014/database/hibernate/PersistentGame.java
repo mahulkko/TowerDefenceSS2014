@@ -1,18 +1,18 @@
-package de.htwg.towerdefence2014.database.impl;
+package de.htwg.towerdefence2014.database.hibernate;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import de.htwg.towerdefence2014.model.impl.Player;
 
 @Entity
-@Table(name = "TDGame")
+@Table(name = "TowerDefenceSS20141")
 public class PersistentGame implements Serializable {
 	
 	/************************************************************
@@ -23,18 +23,13 @@ public class PersistentGame implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private Integer id;
 	
-	@Column(name = "PlayingField")
-	private PersistentField pField;
-	
-	@Column(name = "Player")
-	private Player player;
-	
-	private String playerName;
-	private int life;
-	private int money;
-	
+	@OneToOne(cascade = {CascadeType.ALL})
+	private PersistentPlayingField pField;
+
+	@OneToOne(cascade = {CascadeType.ALL})
+	private PersistentPlayer player;	
 	
 	/************************************************************
 	 * Public constructor
@@ -48,51 +43,27 @@ public class PersistentGame implements Serializable {
 	 * Public methods
 	 ***********************************************************/
 	
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 	
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
-	public PersistentField getpField() {
+	public PersistentPlayingField getPlayingField() {
 		return pField;
 	}
 	
-	public void setpField(PersistentField pField) {
+	public void setPlayingField(PersistentPlayingField pField) {
 		this.pField = pField;
 	}
 	
-	public Player getPlayer() {
+	public PersistentPlayer getPlayer() {
 		return player;
 	}
 	
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
-	
-	public String getPlayerName() {
-		return playerName;
-	}
-	
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
-	}
-	
-	public int getLife() {
-		return life;
-	}
-	
-	public void setLife(int life) {
-		this.life = life;
-	}
-	
-	public int getMoney() {
-		return money;
-	}
-	
-	public void setMoney(int money) {
-		this.money = money;
+	public void setPlayer(PersistentPlayer pPlayer) {
+		this.player = pPlayer;
 	}
 }
