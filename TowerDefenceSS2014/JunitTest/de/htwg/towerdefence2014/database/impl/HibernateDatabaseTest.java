@@ -4,7 +4,6 @@ import junit.framework.TestCase;
 
 import java.io.IOException;
 
-import de.htwg.towerdefence2014.database.hibernate.HibernateDatabase;
 import de.htwg.towerdefence2014.model.impl.Game;
 import de.htwg.towerdefence2014.model.impl.Player;
 import de.htwg.towerdefence2014.model.impl.PlayingField;
@@ -15,20 +14,20 @@ import de.htwg.towerdefence2014.model.impl.PlayingField;
  */
 public class HibernateDatabaseTest extends TestCase {
 	
-	HibernateDatabase hibDatabase;
-	
-	PlayingField pField;
-	
-	Player player;
-	
-	Game game;
-	
-	public void setUp() throws IOException {
-		hibDatabase = new HibernateDatabase();
-		pField = new PlayingField(1, 1);
-		player = new Player();
-		game = new Game(pField, player);
-	}
+//	HibernateDatabase hibDatabase;
+//	
+//	PlayingField pField;
+//	
+//	Player player;
+//	
+//	Game game;
+//	
+//	public void setUp() throws IOException {
+//		hibDatabase = new HibernateDatabase();
+//		pField = new PlayingField(1, 1);
+//		player = new Player();
+//		game = new Game(pField, player);
+//	}
 	
 	/**
 	 * Tests for the field
