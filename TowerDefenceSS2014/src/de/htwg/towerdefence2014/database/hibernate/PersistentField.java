@@ -25,19 +25,19 @@ public class PersistentField implements Serializable {
 	private static final long serialVersionUID = 7510732657083022784L;
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "pFieldID")
-	private long id;
+	private long pFieldID;
 	
 	@ManyToOne
 	@JoinColumn(name = "PlayingFieldID")
 	private PersistentPlayingField pField;
 	
-//	@OneToOne
-//	private PersistentTower tower;
-//	
-//	@OneToMany
-//	private List<PersistentMob> mobs;
+	@OneToOne
+	private PersistentTower tower;
+	
+	@OneToMany (mappedBy = "fild")
+	private List<PersistentMob> mobs;
 	
 	
 	/************************************************************
@@ -51,22 +51,22 @@ public class PersistentField implements Serializable {
 	 * Public methods
 	 ***********************************************************/
 
-//	public PersistentTower getTower() {
-//		return tower;
-//	}
-//
-//
-//	public void setTower(PersistentTower tower) {
-//		this.tower = tower;
-//	}
-//
-//
-//	public List<PersistentMob> getMobs() {
-//		return mobs;
-//	}
-//
-//
-//	public void setMobs(List<PersistentMob> mobs) {
-//		this.mobs = mobs;
-//	}
+	public PersistentTower getTower() {
+		return tower;
+	}
+
+
+	public void setTower(PersistentTower tower) {
+		this.tower = tower;
+	}
+
+
+	public List<PersistentMob> getMobs() {
+		return mobs;
+	}
+
+
+	public void setMobs(List<PersistentMob> mobs) {
+		this.mobs = mobs;
+	}
 }

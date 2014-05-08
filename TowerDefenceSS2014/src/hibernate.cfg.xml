@@ -12,6 +12,11 @@
       <property name="current_session_context_class">thread</property>
       <property name="hibernate.hbm2ddl.auto">update</property>
       <property name="show_sql">false</property>
-      <mapping class="de.htwg.towerdefence2014.database.impl.PersistentGame" />
+      <mapping class="de.htwg.towerdefence2014.database.hibernate.PersistentGame" />
+      <mapping class="de.htwg.towerdefence2014.database.hibernate.PersistentPlayer" />
+      <mapping class="de.htwg.towerdefence2014.database.hibernate.PersistentPlayingField" />
+      <mapping class="de.htwg.towerdefence2014.database.hibernate.PersistentField" />
+      <mapping class="de.htwg.towerdefence2014.database.hibernate.PersistentMob" />
+      <mapping class="de.htwg.towerdefence2014.database.hibernate.PersistentTower" />
    </session-factory>
 </hibernate-configuration>

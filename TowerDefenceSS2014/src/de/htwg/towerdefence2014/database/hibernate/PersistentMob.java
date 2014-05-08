@@ -22,7 +22,7 @@ public class PersistentMob implements Serializable {
 	private static final long serialVersionUID = -1908272019895680801L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(name = "Health")
@@ -32,7 +32,7 @@ public class PersistentMob implements Serializable {
 	private int speed;
 	
 	@ManyToOne
-	@JoinColumn(name = "FildID")
+	@JoinColumn(name = "pFieldID")
 	public PersistentField fild;
 	
 	/************************************************************
@@ -66,12 +66,12 @@ public class PersistentMob implements Serializable {
 		this.speed = speed;
 	}
 	
-//	public PersistentField getFild() {
-//		return fild;
-//	}
-//
-//
-//	public void setFild(PersistentField fild) {
-//		this.fild = fild;
-//	}
+	public PersistentField getFild() {
+		return fild;
+	}
+
+
+	public void setFild(PersistentField fild) {
+		this.fild = fild;
+	}
 }

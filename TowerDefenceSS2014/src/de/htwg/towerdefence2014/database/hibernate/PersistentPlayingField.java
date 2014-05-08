@@ -23,7 +23,6 @@ public class PersistentPlayingField implements Serializable {
 	private static final long serialVersionUID = -1221187500228103205L;
 	
 	@Id
-	@GeneratedValue
 	@Column(name = "playingFieldID")
 	private long playingFieldID;
 	
@@ -67,11 +66,10 @@ public class PersistentPlayingField implements Serializable {
 	}
 
 
-//	public PersistentField[][] getFields() {
-//		return fields;
-//	}
-//
-//
+	public List<PersistentField> getFields() {
+		return fields;
+	}
+
 	public void setFields(List<PersistentField> field) {
 		this.fields = field;
 	}

@@ -215,8 +215,4 @@ public class CouchDatabase implements IDataAccessObject {
 		
 		return game;
 	}
-	
-	
-	
-
 }

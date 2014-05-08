@@ -20,7 +20,7 @@ public class PersistentPlayer implements Serializable {
 	private static final long serialVersionUID = -5550626038474233529L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(name = "Name")

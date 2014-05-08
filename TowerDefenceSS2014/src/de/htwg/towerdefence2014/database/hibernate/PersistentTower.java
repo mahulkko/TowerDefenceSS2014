@@ -20,7 +20,7 @@ public class PersistentTower implements Serializable {
 	private static final long serialVersionUID = -8802270163038398649L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(name = "Damage")

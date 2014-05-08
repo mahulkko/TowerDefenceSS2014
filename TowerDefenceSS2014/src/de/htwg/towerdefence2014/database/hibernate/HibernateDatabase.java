@@ -118,8 +118,10 @@ public class HibernateDatabase implements IDataAccessObject {
 		if (null == game) {
 			return null;
 		}
+		
+		// Set Game
 		PersistentGame pGame = new PersistentGame();
-//		pGame.setId(game.getId());
+		pGame.setId(game.getId());
 		
 		// Set Player
 		PersistentPlayer pPlayer = new PersistentPlayer();
@@ -132,39 +134,41 @@ public class HibernateDatabase implements IDataAccessObject {
 		pPlayingField.setSizeX(game.getPlayingField().getSizeX());
 		pPlayingField.setSizeY(game.getPlayingField().getSizeY());
 		
-		List<PersistentField> pField = new ArrayList<PersistentField>();
-		
 		// Set Fields
-//		PersistentField pField[][] = new PersistentField[game.getPlayingField().getSizeX()][game.getPlayingField().getSizeY()];
-//		for (int x = 0; x < game.getPlayingField().getSizeX(); ++x) {
-//			for (int y = 0; y < game.getPlayingField().getSizeY(); ++y) {
-//				List<PersistentMob> pMobs = new ArrayList<PersistentMob>();
-//				PersistentTower pTower = new PersistentTower();
-//				
-//				ITower tower = game.getPlayingField().getTower(x, y);
-//				List<IMob> tmpMobList = game.getPlayingField().getMobs(x, y);
-//				
-//				if (null != tower) {
-//					// Set Tower for Field
-//					pTower.setDamage(tower.getDamage());
-//					pTower.setHitrate(tower.getHitRate());
-//					pTower.setNumberShoot(tower.getNumberOfShoot());
-//					pField[x][y].setTower(pTower);
-//				} 
-//				else if (!tmpMobList.isEmpty()) {
-//					// Set Mobs for Field
-//					for(int i = 0; i < tmpMobList.size(); ++i) {
-//						PersistentMob pMob = new PersistentMob();
-//						pMob.setFild(pField[x][y]);
-//						pMob.setHealth(tmpMobList.get(i).getHealth());
-//						pMob.setSpeed(tmpMobList.get(i).getSpeed());
-//						pMobs.add(pMob);
-//					}
-//					pField[x][y].setMobs(pMobs);
-//				}
-//			}
-//		}
-		pPlayingField.setFields(pField);
+		List<PersistentField> pFieldList = new ArrayList<PersistentField>();
+		PersistentField pField;
+		for (int x = 0; x < game.getPlayingField().getSizeX(); ++x) {
+			for (int y = 0; y < game.getPlayingField().getSizeY(); ++y) {
+				pField = new PersistentField();
+
+				// Set Mobs and Tower
+				List<PersistentMob> pMobList = new ArrayList<PersistentMob>();
+				PersistentTower pTower = new PersistentTower();
+				
+				ITower tower = game.getPlayingField().getTower(x, y);
+				List<IMob> tmpMobList = game.getPlayingField().getMobs(x, y);
+				
+				if (null != tower) {
+					// Set Tower for Field
+					pTower.setDamage(tower.getDamage());
+					pTower.setHitrate(tower.getHitRate());
+					pTower.setNumberShoot(tower.getNumberOfShoot());
+					pField.setTower(pTower);
+				} 
+				else if (!tmpMobList.isEmpty()) {
+					// Set Mobs for Field
+					for(int i = 0; i < tmpMobList.size(); ++i) {
+						PersistentMob pMob = new PersistentMob();
+						pMob.setHealth(tmpMobList.get(i).getHealth());
+						pMob.setSpeed(tmpMobList.get(i).getSpeed());
+						pMobList.add(pMob);
+					}
+					pField.setMobs(pMobList);
+				}
+				pFieldList.add(pField);
+			}
+		}
+		pPlayingField.setFields(pFieldList);
 		
 		// Set PersistentGame object
 		pGame.setPlayer(pPlayer);
@@ -177,7 +181,7 @@ public class HibernateDatabase implements IDataAccessObject {
 		if (null == pGame) {
 			return null;
 		}
-		
+		// Set Game
 		Game game = new Game();
 		game.setId(pGame.getId());
 		
@@ -189,44 +193,43 @@ public class HibernateDatabase implements IDataAccessObject {
 		
 		// Set PlayingField
 		PlayingField playingField = new PlayingField(pGame.getPlayingField().getSizeX(), pGame.getPlayingField().getSizeY());
-//		
-//		// Set Fields
-//		for (int x = 0; x < pGame.getPlayingField().getSizeX(); ++x) {
-//			for (int y = 0; y < pGame.getPlayingField().getSizeY(); ++y) {
-//				List<IMob> mobs = new ArrayList<IMob>();
-//				Tower tower = new Tower();
-//					
-//				PersistentField pField[][] = pGame.getPlayingField().getFields();
-//				PersistentTower pTower = pField[x][y].getTower();
-//				List<PersistentMob> tmpMobList = pField[x][y].getMobs();
-//				if (null != pTower) {
-//					// Set Tower for Field
-//					tower.setDamage(pTower.getDamage());
-//					tower.setHitRate(pTower.getHitrate());
-//					tower.setNumberOfShoot(pTower.getNumberShoot());
-//					playingField.setTower(x, y, tower);
-//				} 
-//				else if(!tmpMobList.isEmpty()) {
-//					// Set Mobs for Field
-//					for(int i = 0; i < tmpMobList.size(); ++i) {
-//						Mob mob = new Mob();
-////						mob.setFild(pField[x][y]);
-//						mob.setHealth(tmpMobList.get(i).getHealth());
-//						mob.setSpeed(tmpMobList.get(i).getSpeed());
-//						mobs.add(mob);
-//					}
-//					playingField.setListMob(x, y, mobs);
-//				}
-//			}
-//		}
-//		
-//		// Set PersistentGame object
+		
+		// Set Fields
+		List<PersistentField> pFieldFields = pGame.getPlayingField().getFields();
+		int counter = 0;
+		for (int x = 0; x < pGame.getPlayingField().getSizeX(); ++x) {
+			for (int y = 0; y < pGame.getPlayingField().getSizeY(); ++y) {
+				
+				// Set Mobs and Tower for each Field
+				List<PersistentMob> pMobList = pFieldFields.get(counter).getMobs();
+				PersistentTower pTower = pFieldFields.get(counter).getTower();
+				
+				if (null != pMobList) {
+					List<IMob> mobs = new ArrayList<IMob>();
+					IMob mob;
+					for(int i = 0; i < pMobList.size(); ++i) {
+						mob = new Mob();
+						mob.setHealth(pMobList.get(i).getHealth());
+						mob.setSpeed(pMobList.get(i).getSpeed());
+						mobs.add(mob);
+					}
+					playingField.setListMob(x, y, mobs);
+				}
+				else if (null != pTower) {
+					ITower tower = new Tower();
+					tower.setDamage(pTower.getDamage());
+					tower.setHitRate(pTower.getHitrate());
+					tower.setNumberOfShoot(pTower.getNumberShoot());
+					playingField.setTower(x, y, tower);
+				}
+				counter++;
+			}
+		}
+		
+		// Set PersistentGame object
 		game.setPlayer(player);
 		game.setPlayingField(playingField);
 		
 		return game;
 	}
-
-	
-
 }

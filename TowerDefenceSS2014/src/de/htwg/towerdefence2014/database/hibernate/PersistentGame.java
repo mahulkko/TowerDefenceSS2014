@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -22,8 +20,7 @@ public class PersistentGame implements Serializable {
 	private static final long serialVersionUID = -4568358959015268071L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private Integer id = 1;
 	
 	@OneToOne(cascade = {CascadeType.ALL})
 	private PersistentPlayingField pField;
