@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import de.htwg.towerdefence2014.gameSettings.GameSettings;
 import de.htwg.towerdefence2014.model.ITower;
 import de.htwg.towerdefence2014.util.GameHelper;
+import de.htwg.towerdefence2014.util.control.ControllableComponent;
 
 /**
  * <b>Tower Class</b>
@@ -12,7 +13,7 @@ import de.htwg.towerdefence2014.util.GameHelper;
  * Implements ITower Interface
  * @author Christoph Knetschke and Martin Hulkkonen
  */
-public class Tower implements ITower {
+public class Tower extends ControllableComponent implements ITower {
 	
 	/************************************************************
 	 * Private Variables
@@ -179,4 +180,14 @@ public class Tower implements ITower {
 			return (int)(this.damage * (random / HUNDRED));
 		}
     }
+	
+	
+	/************************************************************
+	 * Public ControllableComponent methods
+	 ***********************************************************/
+	
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+	}
 }

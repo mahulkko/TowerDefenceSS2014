@@ -1,8 +1,10 @@
 package de.htwg.towerdefence2014.model.impl;
 
 import org.apache.log4j.Logger;
+
 import de.htwg.towerdefence2014.gameSettings.GameSettings;
 import de.htwg.towerdefence2014.model.IMob;
+import de.htwg.towerdefence2014.util.control.ControllableComponent;
 
 /**
  * <b>Mob Class</b>
@@ -10,7 +12,7 @@ import de.htwg.towerdefence2014.model.IMob;
  * Implements IMob Interface
  * @author Christoph Knetschke and Martin Hulkkonen
  */
-public class Mob implements IMob {
+public class Mob extends ControllableComponent implements IMob {
 	
 	/************************************************************
 	 * Private variables
@@ -96,5 +98,15 @@ public class Mob implements IMob {
 			return true;
 		}
 		return false;					
+	}
+
+	
+	/************************************************************
+	 * Public ControllableComponent methods
+	 ***********************************************************/
+	
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
 	}
 }

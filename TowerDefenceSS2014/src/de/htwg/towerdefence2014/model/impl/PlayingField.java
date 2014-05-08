@@ -1,20 +1,20 @@
 package de.htwg.towerdefence2014.model.impl;
 
 import java.util.List;
-
 import org.apache.log4j.Logger;
 import de.htwg.towerdefence2014.model.IMob;
 import de.htwg.towerdefence2014.model.IPlayingField;
 import de.htwg.towerdefence2014.model.ITower;
+import de.htwg.towerdefence2014.util.control.ControllableComponent;
 import de.htwg.towerdefence2014.util.enums.FieldType;
 
 /**
  * <b>PlayingField Class</b>
- * * <br>
+ * <br>
  * Implements IPlayingField Interface
  * @author Christoph Knetschke and Martin Hulkkonen
  */
-public class PlayingField implements IPlayingField {
+public class PlayingField extends ControllableComponent implements IPlayingField {
 	
 	/************************************************************
 	 * Private variables
@@ -272,6 +272,16 @@ public class PlayingField implements IPlayingField {
 				this.field[i][j] = new Field();
 			}
 		}
+	}
+ 	
+ 	
+ 	/************************************************************
+	 * Public ControllableComponent methods
+	 ***********************************************************/
+	
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
 	}
  	
  	
