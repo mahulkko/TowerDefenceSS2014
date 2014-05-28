@@ -22,10 +22,28 @@ import de.htwg.towerdefence2014.model.impl.Player;
 import de.htwg.towerdefence2014.model.impl.PlayingField;
 import de.htwg.towerdefence2014.model.impl.Tower;
 
+/**
+ * <b>Db4oDatabase class</b>
+ * <br>
+ * Save a Game object on the lenny server
+ * @author chknetsc
+ */
 public class CouchDatabase implements IDataAccessObject {
 	
+	/************************************************************
+	 * Private variables
+	 ***********************************************************/
+	/** A Object form the CoucheDB library */
 	private CouchDbConnector db = null;
 	
+	
+	/************************************************************
+	 * Public constructor
+	 ***********************************************************/
+	
+	/**
+	 * Default Constructor - Opens a connection to the Lenny2 Server
+	 */
 	public CouchDatabase() {
 		HttpClient client = null;
 		try {
@@ -86,10 +104,15 @@ public class CouchDatabase implements IDataAccessObject {
 		// TODO Auto-generated method stub
 	}
 	
+	
 	/************************************************************
 	 * Private methods
 	 ***********************************************************/
 	
+	/**
+	 * @param game - a Game Object
+	 * @return - True if the Game Object is in the Database
+	 */
 	private PersistentGame containsGameID(Game game) {
 		PersistentGame pGame = db.find(PersistentGame.class, game.getId().toString());
 		if (pGame == null) {
@@ -98,6 +121,10 @@ public class CouchDatabase implements IDataAccessObject {
 		return pGame;
 	}
 	
+	/**
+	 * @param game - a Game object
+	 * @return - a copy exact of the Game Object as PersistentGame object
+	 */
 	private PersistentGame copyToPersistentGame(Game game) {
 		if (null == game) {
 			return null;
@@ -160,6 +187,10 @@ public class CouchDatabase implements IDataAccessObject {
 		return pGame;
 	}
 	
+	/**
+	 * @param game - a PersistentGame object
+	 * @return - a copy exact of the PersistentGame Object as Game object
+	 */
 	private Game copyToGame(PersistentGame pGame) {
 		if (null == pGame) {
 			return null;
